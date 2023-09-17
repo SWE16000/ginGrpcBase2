@@ -1,0 +1,16 @@
+//指定proto版本
+syntax="proto3";
+//option go_package="path:name";path表示生成的go文件的存放地址，会自动生成目录
+//name表示生成的go文件所属的包名
+option go_package="/pdgrpc;pdgrpc";
+//消息传输的对象
+message User{
+  int64 id=1;
+  string name=2;
+  string username=3;
+  string password=4;
+  string phone=5;
+  int64 is_delete=6;
+  int64 created_at=7;
+  int64 updated_at=8;
+}

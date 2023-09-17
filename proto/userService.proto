@@ -1,0 +1,53 @@
+//指定proto版本
+syntax="proto3";
+import "google/protobuf/any.proto";
+//option go_package="path:name";path表示生成的go文件的存放地址，会自动生成目录
+//name表示生成的go文件所属的包名
+option go_package="/pdgrpc;pdgrpc";
+//指定等会生成文件出来的package---指定无效
+
+message ListReponse{
+  google.protobuf.Any  Data=1;
+  int64 total=2;
+}
+message LoginRequest  {
+  string username=1;
+  string password=2;
+}
+
+
+message CommonRequest{
+  google.protobuf.Any  Data=1;
+}
+message Role  {
+   int64 Id=1;
+ string Name=2;
+ int64 IsDelete=3;
+ int64 PermissionType=4;
+ int64 Created_at=5;
+ int64 Updated_at=6;
+}
+message UserResponse  {
+     int64  Id=1;
+     string Name=2;
+     string  Username=3;
+     string  Phone=4;
+     string Created_at=5;
+     string Updated_at=6;
+     repeated Role roles=7;//repeated 可重复字段
+}
+
+message CommonResult{
+  int64 code=1;
+  string message=2;
+  google.protobuf.Any  Data=3;
+}
+service UserService{
+  rpc UserEdit(CommonRequest) returns(CommonResult);
+  rpc UserList(CommonRequest) returns(ListReponse);
+  rpc TaskDetail(CommonRequest) returns(CommonResult);
+  rpc UserDelete(CommonRequest) returns(CommonResult);
+  rpc UserLogin(CommonRequest) returns(CommonResult);
+  rpc UserLout(CommonRequest) returns(CommonResult);
+  rpc UserRegister(CommonRequest) returns(CommonResult);
+}

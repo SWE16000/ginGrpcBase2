@@ -1,0 +1,11 @@
+protofile中设置
+option go_package="/pdgrpc;pdgrpc";
+
+protoc --go_out=../../ginGrpcBase2 userModel.proto
+
+protoc --go_out=../../ginGrpcBase2 userService.proto
+
+protoc --go-grpc_out=../../ginGrpcBase2 userService.proto
+
+protoc --go-grpc_out=../../ginGrpcBase2 userService.proto --go-grpc_opt=require_unimplemented_servers=false
+

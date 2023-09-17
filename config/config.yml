@@ -1,0 +1,20 @@
+server:
+  domain: task
+  version: 1.0
+  jwtSecret: 38324
+  grpcAddress: "127.0.0.1:7300"
+
+mysql:
+  driverName: mysql
+  host: 127.0.0.1
+  port: 3306
+  database: gingrpc
+  username: root
+  password: SWE16081
+
+redis:
+  address: 127.0.0.1:6379
+  password:
+domain:
+  user: "user"
+  task: task
